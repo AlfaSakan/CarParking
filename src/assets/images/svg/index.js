@@ -8,3 +8,4 @@ export {default as Lock} from './Lock';
 export {default as EyeSlash} from './EyeSlash';
 export {default as EmailFill} from './EmailFill';
 export {default as UserProfile} from './UserProfile';
+export {default as ShowIcon} from './ShowIcon';

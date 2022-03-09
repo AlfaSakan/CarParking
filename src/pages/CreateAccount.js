@@ -6,6 +6,8 @@ import {colors} from '../assets/colors';
 import {fontFamily} from '../assets/typographyAsset';
 import {EmailFill, EyeSlash, Lock, UserProfile} from '../assets/images/svg';
 
+import {responsiveHeight, responsiveWidth} from '../utils/responsiveUI';
+
 import BaseContainer from '../components/atoms/BaseContainer';
 import TypographyText from '../components/atoms/TypographyText';
 import FlexRowContainer from '../components/atoms/FlexRowContainer';
@@ -13,7 +15,7 @@ import Margin from '../components/atoms/Margin';
 import TextInputUnderline from '../components/atoms/TextInputUnderline';
 import ButtonFill from '../components/atoms/ButtonFill';
 import {largeButtonText} from './Register';
-import {responsiveHeight, responsiveWidth} from '../utils/responsiveUI';
+import TextInputPassword from '../components/atoms/TextInputPassword';
 
 const loginText = {
   fontFamily: fontFamily.PoppinsSemiBold,
@@ -25,8 +27,13 @@ const CreateAccount = ({navigation}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSecure, setIsSecure] = useState(true);
 
   const goBack = () => navigation.goBack();
+
+  const secureHandler = () => {
+    setIsSecure(prev => !prev);
+  };
 
   return (
     <BaseContainer>
@@ -58,13 +65,13 @@ const CreateAccount = ({navigation}) => {
         placeholder="Email"
       />
       <Margin margin={20} />
-      <TextInputUnderline
+      <TextInputPassword
         value={password}
         onChangeText={setPassword}
         icon={<Lock />}
         placeholder="Password"
-        iconRight={<EyeSlash />}
-        isSecure
+        isSecure={isSecure}
+        onPressIconRight={secureHandler}
       />
 
       <Margin margin={54} />

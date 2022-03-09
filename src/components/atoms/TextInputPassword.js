@@ -1,11 +1,19 @@
 import React from 'react';
-import {TextInput, View, StyleSheet} from 'react-native';
+import {TextInput, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {colors} from '../../assets/colors';
+import {EyeSlash, ShowIcon} from '../../assets/images/svg';
 import {fontFamily} from '../../assets/typographyAsset';
 import {responsiveWidth} from '../../utils/responsiveUI';
 import FlexRowContainer from './FlexRowContainer';
 
-const TextInputUnderline = ({icon, placeholder, value, onChangeText}) => {
+const TextInputPassword = ({
+  icon,
+  placeholder,
+  onPressIconRight,
+  value,
+  onChangeText,
+  isSecure = false,
+}) => {
   return (
     <View style={styles.container}>
       <FlexRowContainer justifyContent="space-between">
@@ -17,15 +25,18 @@ const TextInputUnderline = ({icon, placeholder, value, onChangeText}) => {
             style={styles.textInput}
             placeholder={placeholder}
             placeholderTextColor={colors.grey}
-            autoCapitalize="none"
+            secureTextEntry={isSecure}
           />
         </FlexRowContainer>
+        <TouchableOpacity onPress={onPressIconRight}>
+          {isSecure ? <EyeSlash /> : <ShowIcon />}
+        </TouchableOpacity>
       </FlexRowContainer>
     </View>
   );
 };
 
-export default TextInputUnderline;
+export default TextInputPassword;
 
 const styles = StyleSheet.create({
   container: {

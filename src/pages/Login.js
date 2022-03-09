@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 
 import ArrowIosBackOutline from '../assets/images/svg/ArrowIosBackOutline';
 import {colors} from '../assets/colors';
 import {fontFamily} from '../assets/typographyAsset';
-import {EmailFill, EyeSlash, Lock} from '../assets/images/svg';
+import {EmailFill, Lock} from '../assets/images/svg';
+
+import {responsiveHeight, responsiveWidth} from '../utils/responsiveUI';
 
 import BaseContainer from '../components/atoms/BaseContainer';
 import TypographyText from '../components/atoms/TypographyText';
@@ -12,8 +14,8 @@ import FlexRowContainer from '../components/atoms/FlexRowContainer';
 import Margin from '../components/atoms/Margin';
 import TextInputUnderline from '../components/atoms/TextInputUnderline';
 import ButtonFill from '../components/atoms/ButtonFill';
+import TextInputPassword from '../components/atoms/TextInputPassword';
 import {largeButtonText} from './Register';
-import {responsiveHeight, responsiveWidth} from '../utils/responsiveUI';
 
 const loginText = {
   fontFamily: fontFamily.PoppinsSemiBold,
@@ -22,7 +24,15 @@ const loginText = {
 };
 
 const Login = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSecure, setIsSecure] = useState(true);
+
   const goBack = () => navigation.goBack();
+
+  const secureHandler = () => {
+    setIsSecure(prev => !prev);
+  };
 
   return (
     <BaseContainer>
@@ -36,13 +46,20 @@ const Login = ({navigation}) => {
         </View>
       </FlexRowContainer>
       <Margin margin={80} />
-      <TextInputUnderline icon={<EmailFill />} placeholder="Email" />
-      <Margin margin={20} />
       <TextInputUnderline
+        icon={<EmailFill />}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <Margin margin={20} />
+      <TextInputPassword
         icon={<Lock />}
         placeholder="Password"
-        iconRight={<EyeSlash />}
-        isSecure
+        isSecure={isSecure}
+        onPressIconRight={secureHandler}
+        value={password}
+        onChangeText={setPassword}
       />
       <Margin margin={20} />
       <View style={{marginLeft: responsiveWidth(49)}}>
