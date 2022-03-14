@@ -19,3 +19,4 @@ export {default as Location} from './Location';
 export {default as ShoppingMall} from './ShoppingMall';
 export {default as User} from './User';
 export {default as SearchOutline} from './SearchOutline';
+export {default as LineSeparator} from './LineSeparator';

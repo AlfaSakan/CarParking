@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     width,
     height,
-    paddingTop: responsiveHeight(30),
+    // paddingTop: responsiveHeight(30),
     // paddingBottom: responsiveHeight(132),
   },
 });

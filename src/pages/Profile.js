@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState} from 'react';
 import {
   View,
   Image,
@@ -22,9 +23,27 @@ import FlexRowContainer from '../components/atoms/FlexRowContainer';
 import Margin from '../components/atoms/Margin';
 import PaddingHorizontal from '../components/atoms/PaddingHorizontal';
 import TypographyText from '../components/atoms/TypographyText';
+import Dropdown from '../components/molecules/Dropdown';
 import {responsiveHeight, responsiveWidth} from '../utils/responsiveUI';
 
 const Profile = () => {
+  const [chooseType, setChooseType] = useState(false);
+  const [chooseVehicle, setChooseVehicle] = useState(false);
+
+  const typeHandler = () => {
+    setChooseType(!chooseType);
+    if (!chooseType) {
+      setChooseVehicle(false);
+    }
+  };
+
+  const vehicleHandler = () => {
+    setChooseVehicle(!chooseVehicle);
+    if (!chooseVehicle) {
+      setChooseType(false);
+    }
+  };
+
   return (
     <BaseContainer>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -55,73 +74,77 @@ const Profile = () => {
           />
 
           <Margin margin={10} />
-          <View style={styles.cardDropdown}>
-            <FlexRowContainer justifyContent="space-between">
-              <View>
-                <TypographyText
-                  text="Vehicle Type"
-                  color={colors.grey}
-                  {...regularTypography}
-                  fontFamily={fontFamily.PoppinsMedium}
-                />
-                <Margin margin={10} />
-                <TypographyText
-                  text="Car - Sedan"
-                  color={colors.white}
-                  {...semiMediumTypography}
-                />
-              </View>
-              <TouchableOpacity>
-                <ArrowDropDownCircle />
-              </TouchableOpacity>
-            </FlexRowContainer>
+          <View style={{zIndex: 2}}>
+            <TouchableOpacity style={styles.cardDropdown} onPress={typeHandler}>
+              <FlexRowContainer justifyContent="space-between">
+                <View>
+                  <TypographyText
+                    text="Vehicle Type"
+                    color={colors.grey}
+                    {...regularTypography}
+                    fontFamily={fontFamily.PoppinsMedium}
+                  />
+                  <Margin margin={10} />
+                  <TypographyText
+                    text="Car - Sedan"
+                    color={colors.white}
+                    {...semiMediumTypography}
+                  />
+                </View>
+                <TouchableOpacity onPress={typeHandler}>
+                  <ArrowDropDownCircle />
+                </TouchableOpacity>
+              </FlexRowContainer>
+            </TouchableOpacity>
+            <Dropdown visible={chooseType} />
           </View>
 
           <Margin margin={20} />
           <View style={styles.cardDropdown}>
-            <FlexRowContainer justifyContent="space-between">
-              <View>
-                <TypographyText
-                  text="Vehicle License No"
-                  color={colors.grey}
-                  {...regularTypography}
-                  fontFamily={fontFamily.PoppinsMedium}
-                />
-                <Margin margin={10} />
-                <TypographyText
-                  text="PA 32 A 5512"
-                  color={colors.white}
-                  {...semiMediumTypography}
-                />
-              </View>
-              <TouchableOpacity>
-                <ArrowDropDownCircle />
-              </TouchableOpacity>
-            </FlexRowContainer>
+            <View>
+              <TypographyText
+                text="Vehicle License No"
+                color={colors.grey}
+                {...regularTypography}
+                fontFamily={fontFamily.PoppinsMedium}
+              />
+              <Margin margin={10} />
+              <TypographyText
+                text="PA 32 A 5512"
+                color={colors.white}
+                {...semiMediumTypography}
+              />
+            </View>
           </View>
 
           <Margin margin={20} />
-          <View style={styles.cardDropdown}>
-            <FlexRowContainer justifyContent="space-between">
-              <View>
-                <TypographyText
-                  text="Vehicle XYZ"
-                  color={colors.grey}
-                  {...regularTypography}
-                  fontFamily={fontFamily.PoppinsMedium}
-                />
-                <Margin margin={10} />
-                <TypographyText
-                  text="My Ceitos"
-                  color={colors.white}
-                  {...semiMediumTypography}
-                />
-              </View>
-              <TouchableOpacity>
-                <ArrowDropDownCircle />
-              </TouchableOpacity>
-            </FlexRowContainer>
+          <View style={{zIndex: 2}}>
+            <TouchableOpacity
+              style={styles.cardDropdown}
+              onPress={vehicleHandler}>
+              <FlexRowContainer justifyContent="space-between">
+                <View>
+                  <TypographyText
+                    text="Vehicle XYZ"
+                    color={colors.grey}
+                    {...regularTypography}
+                    fontFamily={fontFamily.PoppinsMedium}
+                  />
+                  <Margin margin={10} />
+                  <TypographyText
+                    text="My Ceitos"
+                    color={colors.white}
+                    {...semiMediumTypography}
+                  />
+                </View>
+                <TouchableOpacity>
+                  <ArrowDropDownCircle />
+                </TouchableOpacity>
+              </FlexRowContainer>
+            </TouchableOpacity>
+            <Dropdown visible={chooseVehicle} />
           </View>
+
           <Margin margin={33} />
           <ButtonFill
             backgroundColor={colors.yellow}

@@ -1,11 +1,12 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
+import {responsiveHeight, responsiveWidth} from '../../../utils/responsiveUI';
 
 const ArrowIosDownwardFill = ({width = 40, height = 40, color = 'white'}) => {
   return (
     <Svg
-      width={width}
-      height={height}
+      width={responsiveWidth(width)}
+      height={responsiveHeight(height)}
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

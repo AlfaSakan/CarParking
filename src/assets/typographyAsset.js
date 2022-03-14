@@ -37,11 +37,10 @@ export const semiMediumTypography = {
   lineHeight: 27,
 };
 
-// export const mediumTypography = {
-//   fontFamily: fontFamily.PoppinsMedium,
-//   fontSize: 15,
-//   lineHeight: 22.5,
-// };
+export const mediumTypography = {
+  fontSize: 20,
+  lineHeight: 30,
+};
 
 export const regularTypography = {
   fontFamily: fontFamily.PoppinsRegular,
