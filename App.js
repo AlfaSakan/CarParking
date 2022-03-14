@@ -4,6 +4,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from './src/config/redux/app/store';
+import BottomNavbarStack from './src/navigator/BottomNavbarStack';
 import CreateAccount from './src/pages/CreateAccount';
 import Home from './src/pages/Home';
 
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="LandingPage">
+        <Stack.Navigator initialRouteName="BottomNavbarStack">
           <Stack.Screen
             name="LandingPage"
             component={LandingPage}
@@ -38,9 +39,14 @@ const App = () => {
             component={CreateAccount}
             options={{headerShown: false}}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Home"
             component={Home}
+            options={{headerShown: false}}
+          /> */}
+          <Stack.Screen
+            name="BottomNavbarStack"
+            component={BottomNavbarStack}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

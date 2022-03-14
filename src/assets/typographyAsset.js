@@ -18,3 +18,33 @@ export const fontFamily = {
   PoppinsThin: 'Poppins-Thin',
   PoppinsThinItalic: 'Poppins-ThinItalic',
 };
+
+export const largeTypography = {
+  fontFamily: fontFamily.PoppinsBold,
+  fontSize: 20,
+  lineHeight: 30,
+};
+
+export const buttonLargeTypography = {
+  fontFamily: fontFamily.PoppinsBold,
+  fontSize: 22,
+  lineHeight: 33,
+};
+
+export const semiMediumTypography = {
+  fontFamily: fontFamily.PoppinsSemiBold,
+  fontSize: 18,
+  lineHeight: 27,
+};
+
+// export const mediumTypography = {
+//   fontFamily: fontFamily.PoppinsMedium,
+//   fontSize: 15,
+//   lineHeight: 22.5,
+// };
+
+export const regularTypography = {
+  fontFamily: fontFamily.PoppinsRegular,
+  fontSize: 15,
+  lineHeight: 22.5,
+};

@@ -35,6 +35,10 @@ const CreateAccount = ({navigation}) => {
     setIsSecure(prev => !prev);
   };
 
+  const registHandler = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <BaseContainer>
       <FlexRowContainer justifyContent="space-between" alignItems="center">
@@ -83,6 +87,7 @@ const CreateAccount = ({navigation}) => {
         paddingBottom={responsiveHeight(14)}
         backgroundColor={colors.yellow}
         borderRadius={responsiveWidth(10)}
+        onPress={registHandler}
       />
     </BaseContainer>
   );
