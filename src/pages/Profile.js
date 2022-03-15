@@ -137,7 +137,7 @@ const Profile = () => {
                     {...semiMediumTypography}
                   />
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={vehicleHandler}>
                   <ArrowDropDownCircle />
                 </TouchableOpacity>
               </FlexRowContainer>

@@ -12,6 +12,7 @@ const Tab = createBottomTabNavigator();
 export default function BottomNavbarStack({}) {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
         tabBarStyle: {...styles.tabBarStyles, ...styles.shadow},
